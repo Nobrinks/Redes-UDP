@@ -12,10 +12,15 @@ server.on('listening', function () {
 
 //================ When receiving data from client 
 server.on('message', function (msg, info) {
-    console.log('Data received from client : ' + msg.toString());
-    console.log('Received %d bytes from %s:%d\n', msg.length, info.address, info.port);
+    // msg = decodeURIComponent(msg)
+    msg = JSON.parse(msg.toJSON())
+    console.log(msg)
+    if (Number.isInteger(msg.val) && msg.type === 'int') {
+        console.log('Data received from client : ' + msg.toString());
+        console.log('Received %d bytes from %s:%d\n', msg.length, info.address, info.port);
+        var response = Buffer.from({ 'type': 'int', val: msg.val + 1 }).toJSON();
+    }
     //sending msg to the client
-    var response = Buffer.from('From server : your msg is received');
     server.send(response, info.port, 'localhost', function (error) {
         if (error) {
             client.close();

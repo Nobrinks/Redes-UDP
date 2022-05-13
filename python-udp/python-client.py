@@ -1,10 +1,11 @@
+import json
 import socket
 
-msgFromClient = "Hello UDP Server"
+msgFromClient = {'type': 'int', 'val': 100 }
 
-bytesToSend = str.encode(msgFromClient)
+bytesToSend = str(msgFromClient).encode('utf8')
 
-serverAddressPort = ("127.0.0.1", 20001)
+serverAddressPort = ("127.0.0.1", 7788)
 
 bufferSize  = 1024
 
