@@ -14,10 +14,21 @@ server.on('listening', function () {
 server.on('message', function (msg, info) {
     let buffer_string = Buffer.from(msg).toString()
     console.log("Message from client: ", buffer_string);
-    var teste = parseInt(buffer_string)
-    var response = Buffer.from(`${teste + 1}`)
-    var teste = JSON.parse(buffer_string)
-    console.log(teste.type);
+    var data = JSON.parse(buffer_string)
+    if(data.type === "int" && parseInt(data.val)){
+        var response = Buffer.from(`${data.val + 1}`)
+    }
+    else if(data.type === "char" && data.val.length === 1){
+        if(data.val === data.val.toLowerCase()){
+            var response = Buffer.from(`{"response": "${data.val.toUpperCase()}"}`)
+        }
+        else{
+            var response = Buffer.from(`{"response": "${data.val.toLowerCase()}"}`)
+        }
+    }
+    else if(data.type === "str"){
+        var response = Buffer.from(`{"response": "${data.val.split("").reverse().join("")}"}`)
+    }
     // var response = Buffer.from(`{"type": "int", "val": "${teste + 1}""`)
     // const m = Buffer.from(msg, 'utf8')
     // console.log(m['val'])
