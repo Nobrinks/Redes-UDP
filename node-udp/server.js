@@ -60,4 +60,5 @@ server.on('error', function (error) {
     server.close();
 });
 
-server.bind(port, address)
+server.bind(port)
+// server.addSourceSpecificMembership(address)
