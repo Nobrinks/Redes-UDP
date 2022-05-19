@@ -37,12 +37,12 @@ if __name__ == '__main__':
         input_type = input("Selecione o tipo de mensagem desejada (int | str | char): ")
         try:
             if input_type == "int":
-                input_msg = int(input("Selecione o tipo de mensagem desejada (int | str | char): "))
+                input_msg = input("Digite o inteiro: ")
             elif input_type == "str":
                 input_msg = input("Digite a string: ")
             elif input_type == "char":
                 input_msg = input("Digite o caracter: ")
-                if len(input_type) == 1:
+                if len(input_type) != 1:
                     print("Tipo incorreto, digite um caracter.")
                     continue
             #encoding msg
