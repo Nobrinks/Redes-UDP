@@ -29,7 +29,7 @@ if __name__ == '__main__':
     while True:
 
         server_address = input("Digite o endereço IP do servidor (Default 152.92.236.16): ")
-        server_port = input("Digite a porta desejada (Ex: 99xx - xx = num. chamada): ")
+        server_port = int(input("Digite a porta desejada (Ex: 99xx - xx = num. chamada): "))
         
         #creating socket
         udp_socket = client_socket()
