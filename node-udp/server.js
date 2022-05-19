@@ -1,7 +1,12 @@
 const udp = require('dgram');
+const prompt = require("prompt-sync")();
+
+const address = prompt("Digite o IP: ");
+const port = parseInt(prompt("Digite a porta: "))
 
 // --------------------creating a udp server --------------------//
 const server = udp.createSocket('udp4');
+
 
 //================ Server is listening
 server.on('listening', function () {
@@ -55,4 +60,4 @@ server.on('error', function (error) {
     server.close();
 });
 
-server.bind(7788)
+server.bind(port, address)
