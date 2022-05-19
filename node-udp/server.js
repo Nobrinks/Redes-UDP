@@ -45,7 +45,7 @@ server.on('message', function (msg, info) {
     // `teste: ${var}`
     // Buffer.from(`{type: 'int', 'val': ${msg.val+1}}`);
 
-    server.send(response, info.port, 'localhost', function (error) {
+    server.send(response, info.port, address, function (error) {
         if (error) {
             client.close();
         } else {
