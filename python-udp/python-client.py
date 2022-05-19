@@ -37,7 +37,7 @@ if __name__ == '__main__':
         input_type = input("Selecione o tipo de mensagem desejada (int | str | char): ")
         try:
             if input_type == "int":
-                input_msg = input("Digite o inteiro: ")
+                input_msg = int(input("Digite o inteiro: "))
             elif input_type == "str":
                 input_msg = input("Digite a string: ")
             elif input_type == "char":
