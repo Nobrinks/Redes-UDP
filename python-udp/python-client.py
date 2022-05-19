@@ -42,9 +42,6 @@ if __name__ == '__main__':
                 input_msg = input("Digite a string: ")
             elif input_type == "char":
                 input_msg = input("Digite o caracter: ")
-                if len(input_type) != 1:
-                    print("Tipo incorreto, digite um caracter.")
-                    continue
             #encoding msg
             client_msg = encode_msg({"type": input_type, "val": input_msg})
             #start RTT
