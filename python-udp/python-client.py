@@ -97,7 +97,7 @@ if __name__ == '__main__':
             print('Digite apenas UM caracter.')
 
         try:
-            client_msg = encode_msg({"type": menu_options[option], "val": input_msg})
+            client_msg = encode_msg({"type": menu_options[option].split(' ')[-1], "val": input_msg})
             #start RTT
             sendTime = time.time()
             send_msg(client_msg, udp_socket)   #send client's message
