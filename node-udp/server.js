@@ -12,7 +12,7 @@ const server = udp.createSocket('udp4');
 server.on('listening', function () {
     var address = server.address();
     var port = address.port;
-    console.log('Server is listening at port' + port);
+    console.log('Server is listening at port ' + port);
 });
 
 //================ When receiving data from client 
