@@ -95,15 +95,16 @@ if __name__ == '__main__':
             continue
         except ValueError:
             print('Digite apenas UM caracter.')
+            continue
 
         try:
             client_msg = encode_msg({"type": menu_options[option].split(' ')[-1], "val": input_msg})
             #start RTT
             sendTime = time.time()
             send_msg(client_msg, udp_socket)   #send client's message
-            print('Esperando resposta do servidor...')
+            print('\nEsperando resposta do servidor...\n')
             msgFromServer = udp_socket.recvfrom(BUFSIZE)    #receive server's message
-            msg = "({:.3f} ms) Message from Server: {}".format((time.time() - sendTime) * 1000, msgFromServer[0])
+            msg = "\n({:.3f} ms) Message from Server: {}\n".format((time.time() - sendTime) * 1000, msgFromServer[0])
             print(msg)
         except Exception as e:
             print(e)
