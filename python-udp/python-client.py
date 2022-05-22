@@ -71,7 +71,7 @@ if __name__ == '__main__':
             print('Invalid option. Please enter a number between 1 and 4.')
 
         try:
-            client_msg = encode_msg({"type": input_type, "val": input_msg})
+            client_msg = encode_msg({"type": menu_options[option], "val": input_msg})
             #start RTT
             sendTime = time.time()
             send_msg(client_msg, udp_socket)   #send client's message
