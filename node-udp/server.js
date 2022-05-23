@@ -1,8 +1,13 @@
 const udp = require('dgram');
 const prompt = require("prompt-sync")();
 
-const address = prompt("Digite o IP: ");
-const port = parseInt(prompt("Digite a porta: "))
+let DEFAULT_IP_ADDRESS = "152.92.236.11"
+let DEFAULT_IP_PORT = 9929
+
+let address = prompt("Digite o IP: ");
+address = address ? address : DEFAULT_IP_ADDRESS
+let port = parseInt(prompt("Digite a porta: "))
+port = port ? port : DEFAULT_IP_PORT
 
 // --------------------creating a udp server --------------------//
 const server = udp.createSocket('udp4');
@@ -20,18 +25,18 @@ server.on('message', function (msg, info) {
     let buffer_string = Buffer.from(msg).toString()
     console.log("Message from client: ", buffer_string);
     var data = JSON.parse(buffer_string)
-    if(data.type === "int" && parseInt(data.val)){
+    if (data.type === "int" && parseInt(data.val)) {
         var response = Buffer.from(`${data.val + 1}`)
     }
-    else if(data.type === "char" && data.val.length === 1){
-        if(data.val === data.val.toLowerCase()){
+    else if (data.type === "char" && data.val.length === 1) {
+        if (data.val === data.val.toLowerCase()) {
             var response = Buffer.from(`{"response": "${data.val.toUpperCase()}"}`)
         }
-        else{
+        else {
             var response = Buffer.from(`{"response": "${data.val.toLowerCase()}"}`)
         }
     }
-    else if(data.type === "str"){
+    else if (data.type === "str") {
         var response = Buffer.from(`{"response": "${data.val.split("").reverse().join("")}"}`)
     }
     // var response = Buffer.from(`{"type": "int", "val": "${teste + 1}""`)

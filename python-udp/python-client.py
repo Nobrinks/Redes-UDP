@@ -78,11 +78,11 @@ if __name__ == '__main__':
             elif option == 4:
                 ip = input("Digite o novo IP (Default 152.92.236.16): ")
                 socket.inet_aton(ip)
-                server_address = ip
+                server_address = ip if ip else DEFAULT_SERVER_ADDRESS
                 continue
             elif option == 5:
                 port = int(input("Digite a nova porta: "))
-                server_port = port
+                server_port = port if port else DEFAULT_SERVER_PORT
                 continue
             elif option == 6:
                 print('Encerrando socket...')
