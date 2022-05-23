@@ -98,7 +98,7 @@ if __name__ == '__main__':
             continue
 
         try:
-            client_msg = encode_msg({"type": menu_options[option].split(' ')[-1], "val": input_msg})
+            client_msg = encode_msg({"tipo": menu_options[option].split(' ')[-1], "val": input_msg})
             #start RTT
             sendTime = time.time()
             send_msg(client_msg, udp_socket)   #send client's message
