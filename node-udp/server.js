@@ -26,7 +26,7 @@ server.on('message', function (msg, info) {
     console.log("Message from client: ", buffer_string);
     var data = JSON.parse(buffer_string)
     if (data.type === "int" && parseInt(data.val)) {
-        var response = Buffer.from(`${data.val + 1}`)
+        var response = Buffer.from(`{"response": ${data.val + 1}`)
     }
     else if (data.type === "char" && data.val.length === 1) {
         if (data.val === data.val.toLowerCase()) {
