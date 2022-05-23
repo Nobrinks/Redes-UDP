@@ -104,7 +104,7 @@ if __name__ == '__main__':
             send_msg(client_msg, udp_socket)   #send client's message
             print('\nEsperando resposta do servidor...\n')
             msgFromServer = udp_socket.recvfrom(BUFSIZE)    #receive server's message
-            msg = "\n({:.3f} ms) Message from Server: {}\n".format((time.time() - sendTime) * 1000, json.loads(json.dumps(msgFromServer[0])))
+            msg = "\n({:.3f} ms) Message from Server: {}\n".format((time.time() - sendTime) * 1000, msgFromServer[0])
             print(msg)
         except Exception as e:
             print(e)
