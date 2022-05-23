@@ -25,10 +25,10 @@ server.on('message', function (msg, info) {
     let buffer_string = Buffer.from(msg).toString()
     console.log("Message from client: ", buffer_string);
     var data = JSON.parse(buffer_string)
-    if (data.type === "int" && parseInt(data.val)) {
+    if (data.tipo === "int" && parseInt(data.val)) {
         var response = Buffer.from(`{"response": ${data.val + 1}}`)
     }
-    else if (data.type === "char" && data.val.length === 1) {
+    else if (data.tipo === "char" && data.val.length === 1) {
         if (data.val === data.val.toLowerCase()) {
             var response = Buffer.from(`{"response": "${data.val.toUpperCase()}"}`)
         }
@@ -36,13 +36,13 @@ server.on('message', function (msg, info) {
             var response = Buffer.from(`{"response": "${data.val.toLowerCase()}"}`)
         }
     }
-    else if (data.type === "str") {
+    else if (data.tipo === "str") {
         var response = Buffer.from(`{"response": "${data.val.split("").reverse().join("")}"}`)
     }
     // var response = Buffer.from(`{"type": "int", "val": "${teste + 1}""`)
     // const m = Buffer.from(msg, 'utf8')
     // console.log(m['val'])
-    // if (Number.isInteger(msg.val) && msg.type === 'int') {
+    // if (Number.isInteger(msg.val) && msg.tipo === 'int') {
     //     console.log('Data received from client : ' + msg.toString());
     //     console.log('Received %d bytes from %s:%d\n', msg.length, info.address, info.port);
     // }
